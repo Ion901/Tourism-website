@@ -1,0 +1,478 @@
+@import url("../css/footer.css");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.Layer_1 {
+    position: absolute;
+    width: 292px;
+    left: -69px;
+    top: -59px;
+}
+
+.Layer_2 {
+    position: absolute;
+    width: 192px;
+    left: -49px;
+    top: -29px
+}
+
+.right ul {
+    list-style-type: none;
+    display: flex;
+    gap: 49px;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.right ul>li {
+    cursor: pointer;
+    position: relative;
+}
+
+.right {
+    display: flex;
+    height: 140px;
+    width: 99%;
+    justify-content: flex-end;
+}
+
+.form{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-5%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+.inp{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+form i{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+form:hover,
+form:valid{
+    width: 200px;
+    cursor: pointer;
+}
+
+form:hover input,
+form:valid input{
+    display: block;
+}
+
+form:hover i,
+form:valid i{
+    background: #07051a;
+    color: white;
+}
+
+#clear-btn {
+  display: none;
+  position: absolute;
+  top: 32.5px;
+  bottom:0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  color: white;
+  text-align: center; 
+  width: 100%;
+}
+
+form:valid #clear-btn {
+  display: block;
+  position: relative;
+}
+
+.sticked {
+    transition: 0.5s ease-out;
+    z-index: 2;
+}
+
+.navbar {
+    background: url('../images/pexels-connor-kelley-2651377.jpg') no-repeat fixed center;
+    object-fit:cover;
+    height: 505px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.options img {
+    object-fit: cover;
+}
+
+.right a{
+    text-decoration: none;
+    background-image: linear-gradient(to right,
+            rgb(34, 68, 160),
+            rgb(10, 27, 197) 50%,
+            rgb(255, 255, 255) 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out; 
+
+}
+
+.right a:before {
+    content: '';
+    background: rgb(36, 78, 192);
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.right a:hover {
+    background-position: 0;
+}
+
+.right a:hover::before {
+    width: 100%;
+}
+
+ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    padding-left: 0;
+    left: 0;
+    display: none;
+    background: rgba(67, 22, 190, 0.8);
+    position: absolute;
+    
+}
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgba(10, 20, 47, 0.9);
+    transition: 0.5s ease-in;
+    z-index: 2;
+    font-size: 18px;
+    height: 120px;
+    color: white;
+}
+ul li:hover>ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    min-width: 180px;
+    text-align: left;
+    padding-top: 20px;
+    box-shadow: 0px 2px 6px -1px rgb(0, 0, 0);
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    border-style: none;
+}
+
+ul li ul li a:hover {
+    padding-left: 10px;
+    border-left: 2px solid #00000000;
+    transition: all 0.3s ease;
+}
+
+li ul li a {
+    transition: all 0.5s ease;
+}
+
+.icon {
+    display: none;
+}
+.responsive {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.responsive a {
+    float: none;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.responsive a:hover {
+    background-color: #ddd;
+    color: black;
+    float: none;
+}
+
+.responsive a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.info{
+    padding-left: 30px;
+}
+.intro{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.informatie{
+    width: 60%;
+}
+.info p{
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.intro p,.info p,.mid p{
+    padding-top: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.img img{
+    width: 400px;
+    transform: scale(1);
+}
+.img img:hover{
+    transition: 0.2s linear;
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 7px 9px 24px 5px rgba(0,0,0,0.76);
+}
+.info1{
+    width: 60%;
+    margin: 0 auto;
+    align-content: center;
+}
+.pos{
+    
+    display: flex;
+    margin-left: 50px;
+    align-items: center;
+    
+}
+.mid img{
+    width: 322px;
+    transform: scale(1);
+}
+.mid img:hover{
+    transition: 0.2s ease-in;
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 7px 9px 24px 5px rgba(0,0,0,0.76);
+}
+.incheiere img{
+    width: 100%;
+    transform: scale(0.9);
+}
+.incheiere img:hover{
+    transition: 0.5s ease-in;
+    transform: scale(0.98);
+    cursor: pointer;
+    box-shadow: 7px 9px 24px 5px rgba(0,0,0,0.76);
+}
+.incheiere p{
+    padding: 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+.footer{
+    display: flex;
+    height: 455px;
+    background-color: rgb(10, 20, 47);
+}
+.container{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    margin: 100px 173px 100px 160px;
+    gap:95px;
+    width: 80vw;
+}
+
+#gmail{
+    padding-top: 20px;
+}
+.cc{
+    padding-top: 5%;
+    grid-column-start: 2;
+    grid-column-end:5;
+}
+.footer{
+    font-family: 'Poppins';
+    color: white;
+}
+.footer ul {
+list-style: none;
+font-size: 16px;
+    line-height: 20px;
+}
+.container ul li:hover, .container p:hover{
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+#upi{
+    color: #00e1ff;
+    font-size: 40px;
+    transition: 3s ease-out;
+}
+.footer a{
+    text-decoration:none;
+    color: white;
+}
+
+@media screen and (max-width:992px) {
+    .responsive .dropdown:hover {
+        visibility: visible;
+        opacity: 1;
+        position: relative;
+        display: block;
+        min-width: 200px;
+        text-align: left;
+        padding-top: 20px;
+        box-shadow: 0px 3px 5px -1px rgb(0 0 0);
+    }
+
+    .right.responsive {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        z-index: 100;
+        display: flex;
+    }
+
+    .right.responsive a {
+        display: block;
+        text-align: center;
+    }
+
+    .right a:not(:first-child) {
+        display: none;
+    }
+
+    a.icon {
+        float: right;
+        display: block;
+        z-index: 100;
+        position: absolute;
+        top: 50px;
+        font-size: 25px;
+        color: white;
+        right: 3%;
+    }
+
+    .right ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        color: white;
+        overflow: scroll;
+        font-size: 18px;
+    }
+
+    .right ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    .right {
+        justify-content: center;
+        display: none;
+        height: 530px;
+    }
+
+    .container{
+        gap:22px;
+        margin-left: 0px;
+    }
+    body{
+        width: 405px;
+    }
+}
+@media screen and (max-width:540px) {
+    .container{
+        gap:20px;
+    }
+    .logo img{
+        width: 86px;
+        height: 123px;
+    }
+    .container p,.container ul>li{
+        gap:2px;
+        margin-left:0px;
+        font-size: 9px;
+    }
+    #upi{
+        font-size: 21px;
+    }
+    .pos{
+        flex-direction: column;
+        margin-left: 0px;
+    }
+    .intro{
+        flex-direction: column-reverse;
+    }
+    .img img{
+        width: 375px;
+        transform: scale(1);
+    }
+    body{
+        width: 405px;
+    }
+    
+}

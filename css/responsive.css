@@ -1,0 +1,24 @@
+.right.responsive {
+    position: relative;
+    left: 45vw;
+    height: 100vh;
+    width: 55%;
+    z-index: 100;
+    display: flex;
+    box-shadow: -28px -5px 48px -1px rgba(0,0,0,0.75);
+}
+.right ul li{
+    padding-bottom: 20px;
+}
+.right ul {
+    list-style-type: none;
+    display: block;
+    color: white;
+    overflow: scroll;
+    font-size: 18px;
+    padding-top: 75px;
+    
+}
+.dropdown ul li {
+    padding-bottom: 6px;
+}

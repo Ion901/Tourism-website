@@ -1,0 +1,94 @@
+
+body {
+    width: 500px;
+    margin: 0 auto;
+    padding: 50px;
+    background: rgb(233,201,9);
+background: linear-gradient(90deg, rgba(233,201,9,1) 0%, rgba(255,248,0,0.2497373949579832) 51%, rgba(0,212,255,1) 100%);
+color: black;
+
+}
+
+.header-logo{
+    width: 358px;
+    margin: 0 auto;
+    height: 17vh;
+    position: relative;
+}
+.Layer_1 {
+    position: absolute;
+    top: -87px;
+    width: 216px;
+    height: 276px;
+    left: 57px;
+}
+
+div.elem-group {
+    margin: 20px 0;
+    
+}
+
+div.elem-group.inlined {
+    width: 49%;
+    display: inline-block;
+    float: left;
+    margin-left: 1%;
+}
+
+label {
+    display: block;
+    font-family: 'Nanum Gothic';
+    padding-bottom: 10px;
+    font-size: 1.25em;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline: none;
+} 
+
+
+input,
+select,
+textarea { 
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    box-sizing: border-box;
+    font-size: 1.25em;
+    font-family: 'Nanum Gothic';
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+}
+
+div.elem-group.inlined input {
+    width: 95%;
+    display: inline-block;
+}
+
+textarea {
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+hr {
+    border: 1px dotted rgb(0, 0, 0);
+}
+
+button {
+    height: 50px;
+    background: orange;
+    border: none;
+    color: white;
+    font-size: 1.25em;
+    font-family: 'Nanum Gothic';
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 2px solid black;
+}
+

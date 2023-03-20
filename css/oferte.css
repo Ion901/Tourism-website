@@ -1,0 +1,453 @@
+@import url("../css/footer.css");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+.Layer_1 {
+    position: absolute;
+    width: 292px;
+    left: -69px;
+    top: -59px;
+}
+
+.Layer_2 {
+    position: absolute;
+    width: 192px;
+    left: -49px;
+    top: -29px
+}
+
+.right ul {
+    list-style-type: none;
+    display: flex;
+    gap: 49px;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.right ul>li {
+    cursor: pointer;
+    position: relative;
+}
+
+.right {
+    display: flex;
+    height: 140px;
+    width: 99%;
+    justify-content: flex-end;
+}
+
+.form{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-5%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+.inp{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+form i{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+form:hover,
+form:valid{
+    width: 200px;
+    cursor: pointer;
+}
+
+form:hover input,
+form:valid input{
+    display: block;
+}
+
+form:hover i,
+form:valid i{
+    background: #07051a;
+    color: white;
+}
+
+#clear-btn {
+  display: none;
+  position: absolute;
+  top: 32.5px;
+  bottom:0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  color: white;
+  text-align: center; 
+  width: 100%;
+}
+
+form:valid #clear-btn {
+  display: block;
+  position: relative;
+}
+
+.sticked {
+    transition: 0.5s ease-out;
+    z-index: 2;
+}
+
+.navbar {
+    background: url('../images/vicko-mozara-m82uh_vamhg-unsplash.jpg') no-repeat fixed center;
+    object-fit:cover;
+    height: 505px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.options img {
+    object-fit: cover;
+}
+
+.right a{
+    text-decoration: none;
+    background-image: linear-gradient(to right,
+            rgb(34, 68, 160),
+            rgb(10, 27, 197) 50%,
+            rgb(255, 255, 255) 50%);
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out; 
+
+}
+
+.right a:before {
+    content: '';
+    background: rgb(36, 78, 192);
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.right a:hover {
+    background-position: 0;
+}
+
+.right a:hover::before {
+    width: 100%;
+}
+
+ul li ul {
+    visibility: hidden;
+    opacity: 0;
+    padding-left: 0;
+    left: 0;
+    display: none;
+    background: rgba(67, 22, 190, 0.8);
+    position: absolute;
+    
+}
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgba(10, 20, 47, 0.9);
+    transition: 0.5s ease-in;
+    z-index: 2;
+    font-size: 18px;
+    height: 120px;
+    color: white;
+}
+ul li:hover>ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    min-width: 180px;
+    text-align: left;
+    padding-top: 20px;
+    box-shadow: 0px 2px 6px -1px rgb(0, 0, 0);
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+    border-style: none;
+}
+
+ul li ul li a:hover {
+    padding-left: 10px;
+    border-left: 2px solid #00000000;
+    transition: all 0.3s ease;
+}
+
+li ul li a {
+    transition: all 0.5s ease;
+}
+
+.linear{
+    border-left: 2px solid black;
+    height: 90%;
+}
+.barca,.madrid,.azur,.africa,.turcia{
+    height: 391px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    margin: 50px auto;
+    width: 95%;
+    background-color: rgb(214, 200, 200);
+}
+.africa,.turcia{
+    display: none;
+
+}
+.image{
+    width: 460px;
+}
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cont p+p{
+    padding-top: 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+}
+.cont p{
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+.cont i{
+    padding-right: 10px;
+}
+
+.details_price{
+    width: 150px;
+    font-family: 'Inter', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.details_price P{
+text-align: left;
+}
+
+.details_price h2{
+    text-align: right;
+    padding-top: 30px;
+}
+
+.button{
+    text-align: center;
+    padding-top: 40px;
+}
+
+.button button{
+    border:none;
+    border-radius: 30px;
+    width: 172px;
+    height: 63px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    background-color: rgb(196, 52, 52);
+    color: white;
+}
+.button button:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgb(216, 30, 30);
+    cursor: pointer;
+}
+.button button:active{
+    color: rgb(0, 0, 0);
+    background-color: rgb(216, 30, 30);
+    cursor: pointer;
+}
+.view_all{
+    position: relative;
+    height: 292px;
+    width: 100%;
+}
+.view_all img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.view button{
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    width: 252px;
+    height: 74px;
+    border: none;
+    border-radius: 36px;
+    background-color: rgba(193, 171, 91, 0.83);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.view button:hover:active{
+    background-color: rgba(255, 230, 0, 0.7);;
+}
+.view button:hover{
+    color: white;
+    background-color: rgba(158, 148, 59,  0.83);
+}
+
+.footer{
+    display: flex;
+    height: 455px;
+    background-color: rgb(10, 20, 47);
+}
+.container{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    margin: 100px 173px 100px 160px;
+    gap:95px;
+    width: 80vw;
+}
+
+#gmail{
+    padding-top: 20px;
+}
+.cc{
+    padding-top: 5%;
+    grid-column-start: 2;
+    grid-column-end:5;
+}
+.footer{
+    font-family: 'Poppins';
+    color: white;
+}
+.footer ul {
+list-style: none;
+font-size: 16px;
+    line-height: 20px;
+}
+.container ul li:hover, .container p:hover{
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+#upi{
+    color: #00e1ff;
+    font-size: 40px;
+    transition: 3s ease-out;
+}
+.footer a{
+    text-decoration:none;
+    color: white;
+}
+
+.responsive {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.responsive a {
+    float: none;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.responsive a:hover {
+    background-color: #ddd;
+    color: black;
+    float: none;
+}
+
+.responsive a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.icon {
+    display: none;
+}
+
+@media screen and (max-width:992px) {
+   
+    .right a:not(:first-child) {
+        display: none;
+    }
+
+    .responsive .dropdown:hover{
+        visibility: visible;
+        opacity: 1;
+        position: relative;
+        display: block;
+        min-width: 200px;
+        text-align: left;
+        padding-top: 20px;
+        box-shadow: 0px 3px 5px -1px rgb(0 0 0);
+      }
+   
+    .options{
+        display: none;
+    }
+    .dropdown ul li{
+        padding-bottom: 5px;
+    }
+    .ctn2,.ctn3{
+        display: block;
+        position: relative;
+        width:fit-content;
+        margin: 150px 137px 50px 126px;
+    }
+    .right1 img{
+        width: 246px;
+    height: 266px;
+    object-fit: cover;
+    position: absolute;
+    top: 25%;
+    left: 64%;
+    }
+    }

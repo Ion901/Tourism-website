@@ -1,0 +1,53 @@
+@import url("../css/footer.css");
+@import url("../css/navbar.css");
+.edit_tab{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#primu{
+    padding: 10px;
+    background-color: orange;
+    font-size: large;
+    border-radius: 5px;
+}
+#doi{
+    padding: 10px;
+    background-color: rgb(255, 0, 0);
+    font-size: large;
+    border-radius: 5px;
+}
+.tabel2{
+    margin: 30px 0px 10px 50px
+}
+.add{
+    padding: 12px;
+    background-color: rgb(30, 125, 180);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.add:hover{
+    background-color: rgb(85, 152, 190);
+}
+table{
+    margin: 50px;
+    margin-top: 20px;
+}
+.first{
+    background-color: black;
+    color: white;
+    text-align: left;
+}
+.first td{
+    padding: 10px;
+    border:none;
+}
+tr:nth-child(2n){
+    background-color: rgba(226, 236, 77, 0.705);
+
+}
+tr:nth-child(2n+1){
+    background-color: rgba(114, 112, 112, 0.705);
+}

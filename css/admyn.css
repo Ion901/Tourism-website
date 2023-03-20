@@ -1,0 +1,24 @@
+@import url("../css/footer.css");
+@import url("../css/navbar.css");
+.user-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+body{
+    margin: auto;
+}
+label{
+    text-align: left;
+}
+section{
+    text-align: center;
+    box-shadow: 10px 10px 39px -9px rgb(0 0 0 / 75%);
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    margin: 20px auto;
+}
