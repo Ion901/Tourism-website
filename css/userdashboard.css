@@ -1,13 +1,15 @@
-@import url(navbar.css);
-.navbar{
-    height: 170px;
-}
+@import url(navbar2.css);
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins';
 }
+
+.navbar{
+    height: 170px;
+}
+
 
 h3 {
     text-align: center;
@@ -42,15 +44,15 @@ ul {
 }
 .circular--portrait {
     position: relative;
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
 }
 
 .circular--portrait img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .update,

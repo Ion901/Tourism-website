@@ -1,5 +1,11 @@
-@import url('../css/navbar.css');
+@import url('../css/navbar2.css');
 @import url('../css/footer.css');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: hidden;
+}
 .navbar {
     background: url('../images/casey-horner-O0R5XZfKUGQ-unsplash.jpg') no-repeat fixed bottom;
     position: relative;

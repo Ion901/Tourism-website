@@ -1,4 +1,11 @@
-@import '../css/navbar.css';
+@import '../css/navbar2.css';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: hidden;
+}
+
 body { 
     background-color: rgb(1, 5, 19);
 }
@@ -8,16 +15,6 @@ body {
     height: 107px;
 }
 
-.right {
-    height: 107px;
-}
-
-.Layer_1 {
-    position: absolute;
-    width: 166px;
-    left: -34px;
-    top: -42px;
-}
 
 .right a {
     font-size: smaller;
@@ -55,8 +52,8 @@ body {
 .video video {
     width: 100%;
     height: 100%;
-    border-bottom-right-radius: 40px;
-    border-top-right-radius: 40px;
+    border-radius:40px;
+    padding: 20px 0px 0px 20px 
 }
 
 .center {
@@ -85,12 +82,13 @@ form #myInput1 {
 
 .content {
     margin: 40px;
+    font-size: x-large;
 }
 
 #em {
     display: flex;
     border-bottom: 1px solid white;
-
+    width:290px;
 }
 
 .signin p {

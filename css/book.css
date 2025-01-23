@@ -6,7 +6,7 @@ body {
     background: rgb(233,201,9);
 background: linear-gradient(90deg, rgba(233,201,9,1) 0%, rgba(255,248,0,0.2497373949579832) 51%, rgba(0,212,255,1) 100%);
 color: black;
-
+    position: relative;
 }
 
 .header-logo{
@@ -17,9 +17,8 @@ color: black;
 }
 .Layer_1 {
     position: absolute;
-    top: -87px;
     width: 216px;
-    height: 276px;
+    height: 133px;
     left: 57px;
 }
 
@@ -92,3 +91,39 @@ button:hover {
     border: 2px solid black;
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:-150px;
+    height: 70px;
+    width: 85%;
+    border-radius: 10px;
+    animation-name: popUp;
+    animation-duration: 4s; /* Set animation duration */
+    background-color: red;
+    z-index: 999;
+}
+.container p{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-family: 'Nanum Gothic';
+    padding: 10px;
+}
+
+@keyframes popUp {
+    0% {
+        top: -150px;
+    }
+    30% {
+        top: calc(var(--start-top) + 50px);
+    }
+    60%{
+        top: calc(var(--start-top) + 50px);
+    }
+    100% {
+        top: calc(var(--start-top) - 100px);
+    }
+}  

@@ -1,0 +1,13 @@
+DirectoryIndex php/index.php
+Options -Indexes 
+
+RewriteEngine On
+
+
+RewriteBase /php
+# Permite accesul direct la fișierele CSS și JS
+RewriteRule %{REQUEST_URI} ^/(css|js)/ [NC]
+
+# Redirecționează toate cererile către fișiere PHP din php-folder
+RewriteCond %{DOCUMENT_ROOT}/Tourism-website/Tourism-website1/php/%{REQUEST_URI} -f
+RewriteRule ^(.*)$ php/$1 [L]

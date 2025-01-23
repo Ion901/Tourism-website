@@ -17,7 +17,7 @@ if(!isset($_GET['email']) || !isset($_GET['token'])){
 
     if(mysqli_num_rows($sql) > 0){
         mysqli_query($conn, "UPDATE user SET isEmailConfirmed=1, token='' WHERE email='$email' ");
-        header("Location:login.php");
+        header("Location:../login.php");
     }else{
         redirect();
     }
