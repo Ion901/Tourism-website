@@ -1,4 +1,6 @@
 import { navbar } from "./navbar.js";
+import { initObserver } from "./intersectionObserver.js";
+
 navbar();
 
 var modal = document.getElementById("myModal");
@@ -21,5 +23,23 @@ span.onclick = function() {
   modal.style.display = "none";
   body.style.overflow = 'visible';
 }
+
+document.addEventListener('DOMContentLoaded', initObserver(['.myImg']))
+
+const blurDivs = document.querySelectorAll('.blur-div');
+blurDivs.forEach(div => {
+  const img = div.querySelector('img');
+
+  function loaded() {
+    //show img
+    div.classList.add('loaded')
+  }
+
+  if (img.complete) {
+    loaded();
+  } else {
+    img.addEventListener('load', loaded())
+  }
+})
 
 

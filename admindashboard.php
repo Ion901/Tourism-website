@@ -37,7 +37,7 @@ $sqlInfo = mysqli_query($conn, "SELECT info.*, gallery.path FROM `info` LEFT JOI
     <section>
         <div class="ctn">
             <nav class="navbar">
-            <?php include_once "navbar.php";?>
+                <?php include_once "navbar.php";?>
             </nav>
         </div>
         <div class="tabel2">
@@ -64,7 +64,7 @@ $sqlInfo = mysqli_query($conn, "SELECT info.*, gallery.path FROM `info` LEFT JOI
                  <img loading=\"lazy\" class=\"admin-edit-photo myImg\" id=\"myImg\" src=\"$row[9]\" alt=\"no image\">
                  <div id=\"myModal\" class=\"modal\">
                     <span class=\"close\">&times;</span>
-                    <img class=\"modal-content\" id=\"img01\">
+                    <img loading=\"lazy\" class=\"modal-content\" id=\"img01\">
                    </div>
                 </td>
                <td > 

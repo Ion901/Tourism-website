@@ -43,7 +43,8 @@ $directory = basename(dirname($url));
                 <form action="" class="form">
                     <input type="search" class="inp" required>
                     <i class="fa fa-magnifying-glass"></i>
-                    <a href="<?php echo $directory === "php" ? "../" : ""  ?>javascript:void(0)" id="clear-btn">Clear</a>
+                    <a href="<?php echo $directory === "php" ? "../" : ""  ?>javascript:void(0)"
+                        id="clear-btn">Clear</a>
                 </form>
             </li>
             <li>
@@ -59,10 +60,10 @@ $directory = basename(dirname($url));
                         echo '<i class="fa-solid fa-circle-user"></i>';
                     } else {
                     ?>
-                        <div class="circular--portrait--navbar">
-                            <img src="<?php echo $directory === "php" ? "../images/" : "images/";
-                                        echo $image; ?>">
-                        </div>
+                    <div class="circular--portrait--navbar">
+                        <img src="<?php echo $directory === "php" ? "../images/" : "images/";
+                                        echo $image; ?>" loading="lazy">
+                    </div>
                     <?php
                     }
                     ?>

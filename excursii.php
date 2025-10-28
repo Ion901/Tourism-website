@@ -12,9 +12,9 @@
 
 <body>
     <section>
-       <div class="ctn">
+        <div class="ctn">
             <nav class="navbar">
-                <?php include_once "navbar.php"?>
+                <?php include_once "navbar.php" ?>
             </nav>
         </div>
 
@@ -58,40 +58,41 @@
                 <div class="formular2 form btn"><button>Caută</button></i></div>
             </form>
         </div>
-       
+
         <div class="card_ctn">
             <div class="cnt">
-            <?php
-        include "php/connection.php";
-        $sql = mysqli_query($conn, "SELECT * FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.is_excursion = 1 GROUP BY gallery.id_info");
-        $rowcount = mysqli_num_rows($sql);
-        $row2 = mysqli_fetch_all($sql,MYSQLI_ASSOC);
-        for($i = 0; $i < $rowcount; $i++){
-        ?>
-                <div class="prima oferte">
-                    <a href="detalii.php?city=<?php echo $row2[$i]['city']?>">
-                    <img src="<?php echo $row2[$i]['path'] ?>" alt="image not responding">
-                    <div class="content">
-                    <h5><?php echo $row2[$i]['disponibility']?></h5>
-                    <p class="text"><?php echo $row2[$i]['city']?></p>
-                    <br>
-                    <div class="inline">
-                   <p><i class="fa-solid fa-clock"></i><?php echo $row2[$i]['durata']?></p>
-                    <p class="pret">Price:<i><?php echo $row2[$i]['price']?>$</i></p>
-                </div>
-            </div>
-            </a>
-                </div>
                 <?php
-        }
-            ?>
+                include "php/connection.php";
+                $sql = mysqli_query($conn, "SELECT * FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.is_excursion = 1 GROUP BY gallery.id_info");
+                $rowcount = mysqli_num_rows($sql);
+                $row2 = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+                for ($i = 0; $i < $rowcount; $i++) {
+                ?>
+                    <div class="prima oferte">
+                        <a href="detalii.php?city=<?php echo $row2[$i]['city'] ?>">
+                            <img src="<?php echo $row2[$i]['path'] ?>" loading="lazy" alt="image not responding">
+                            <div class="content">
+                                <h5><?php echo $row2[$i]['disponibility'] ?></h5>
+                                <p class="text"><?php echo $row2[$i]['city'] ?></p>
+                                <br>
+                                <div class="inline">
+                                    <p><i class="fa-solid fa-clock"></i><?php echo $row2[$i]['durata'] ?></p>
+                                    <p class="pret">Price:<i><?php echo $row2[$i]['price'] ?>$</i></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <?php
+                }
+                ?>
             </div>
         </div>
-         
+
         <div class="ask_tab">
-            <img src="./images/Rectangle 16.jpg" alt="image not responding">
+            <img src="./images/Rectangle 16.jpg" loading="lazy" alt="image not responding">
             <div class="content-01">
-                <p>Ai anumite intrebari?! <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFii liber sa intrebi...</p>
+                <p>Ai anumite intrebari?! <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFii liber sa
+                    intrebi...</p>
                 <a href="contact.php"><button> Nu ezita!!!</button></a>
             </div>
         </div>
@@ -102,70 +103,29 @@
         </div>
         <div class="news">
             <h2 style="margin-bottom: 30px;">NOUTĂȚI</h2>
-                    <div class="divider">
-                        <div class="documents">
-                            <a href="https://asp.gov.md/">
-                            <img src="./images/Rectangle 19.png" alt="error">
-                            <p>CETATENIE, ACTE LEGALIZATE, TRANSPORT.</a></p>
-                        </div>
-                        <div class="covid">
-                            <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">
-                            <img src="./images/Rectangle 20.png" alt="error">
-                            <p>ULTIMELE INFORMATII COVID-19</p></a>
-                        </div>
-                        <div class="tricks">
-                            <a href="https://trade.ec.europa.eu/access-to-markets/ro/content/documente-si-proceduri-de-vamuire">
-                            <img src="./images/Rectangle 21.png" alt="error">
-                            <p>DOCUMENTE BINE ELABORATE ȘI CUM AR TREBUI SA TE PREZINȚI?!</a></p>
-                        </div>
+            <div class="divider">
+                <div class="documents">
+                    <a href="https://asp.gov.md/">
+                        <img src="./images/Rectangle 19.png" loading="lazy" alt="error">
+                        <p>CETATENIE, ACTE LEGALIZATE, TRANSPORT.
+                    </a></p>
+                </div>
+                <div class="covid">
+                    <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">
+                        <img src="./images/Rectangle 20.png" loading="lazy" alt="error">
+                        <p>ULTIMELE INFORMATII COVID-19</p>
+                    </a>
+                </div>
+                <div class="tricks">
+                    <a href="https://trade.ec.europa.eu/access-to-markets/ro/content/documente-si-proceduri-de-vamuire">
+                        <img src="./images/Rectangle 21.png" loading="lazy" alt="error">
+                        <p>DOCUMENTE BINE ELABORATE ȘI CUM AR TREBUI SA TE PREZINȚI?!
+                    </a></p>
+                </div>
 
-                    </div>
-        </div>
-        <div class="footer">
-            <div class="logo">
-                <img src="./images/KK-01 1.png" alt="image not finded">
-            </div>
-            <div class="container">
-            <div class="strada">
-                <p style="font-family:'Jost';">str. Sarmizegetusa,<br>
-                    Botanica Veche 48/12</p>
-            </div>
-            <div class="first_menu">
-                <ul>
-                    <li><a href="about.php">About</a></li>
-                    <br>
-                    <li><a href="oferte.php">Excursii</a></li>
-                    <br>
-                    <li><a href="oferte.php">Oferte</a></li>
-                    <br>
-                    <li><a href="oferte.php">Contact</a></li>
-                    <br>
-                    <li><a href="login.php">Authentification</a></li>
-                </ul>
-            </div>
-            <div class="social">
-                <ul>
-                    <li>Facebook</li>
-                    <br>
-                    <li>Twitter</li>
-                    <br>
-                    <li>Linkedin</li>
-                    <br>
-                    <li>Instagram</li>
-                </ul>
-            </div>
-            <div class="up">
-                <a href="#"><i id="upi" class="fa-solid fa-circle-arrow-up"></i></a>
-            </div>
-            <div class="number">
-                <p>(373) 069-6785-321</p>
-                <p id="gmail">ionerhan13@gmail.com</p>
-            </div>
-            <div class="cc">
-                <p>© 2022 Discover World Media. All rights reserved.</p>
             </div>
         </div>
-        </div>
+        <?php include_once "footer.php" ?>
     </section>
 </body>
 <script src="./js/excursii.js" type="module"></script>

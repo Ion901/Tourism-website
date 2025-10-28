@@ -1,5 +1,6 @@
-@import '../css/footer.css';
-@import '../css/navbar2.css';
+@import 'footer.css';
+@import 'navbar2.css';
+@import 'intersectionObserver.css';
 
 * {
   margin: 0;
@@ -215,6 +216,43 @@
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+
+
+
+.blur-div img {
+  opacity: 0;
+  transition: opacity 250ms infinite;
+}
+
+.blur-div.loaded img {
+  opacity: 1;
+}
+
+.blur-div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: pulse 2.5s infinte;
+}
+
+@keyframes pulse{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+.blur-div.loaded::before {
+  content: none;
 }
 
 

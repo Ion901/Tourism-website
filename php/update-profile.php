@@ -96,10 +96,10 @@ if (isset($_POST['update-profile'])) {
                 $url .= $_SERVER['PHP_SELF'];
                 $directory = basename(dirname($url));
                 if ($row['image'] == '') {
-                    echo '<img src="../images/default-avatar.png">';
+                    echo '<img src="../images/default-avatar.png" loading="lazy" >';
                 } else { ?>
-                    <div class="circular--portrait"><img src="<?php echo $directory === "php" ? "../images/" : "images/";
-                                                                echo $image; ?>"></div>
+                <div class="circular--portrait"><img src="<?php echo $directory === "php" ? "../images/" : "images/";
+                                                                echo $image; ?>" loading="lazy"></div>
                 <?php
                 }
                 ?>

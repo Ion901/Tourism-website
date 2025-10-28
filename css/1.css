@@ -1,3 +1,5 @@
+@import 'footer.css';
+
 * {
     margin: 0;
     padding: 0;
@@ -595,51 +597,7 @@ li ul li a {
     width: 100%;
 }
 
-.footer{
-    display: flex;
-    height: 455px;
-    background-color: rgb(10, 20, 47);
-}
-.container{
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    margin: 100px 173px 100px 160px;
-    gap:77px;
-    width: 80vw;
-}
 
-#gmail{
-    padding-top: 20px;
-}
-.cc{
-    padding-top: 5%;
-    grid-column-start: 2;
-    grid-column-end:5;
-}
-.footer{
-    font-family: 'Poppins';
-    color: white;
-}
-.footer ul {
-list-style: none;
-font-size: 16px;
-    line-height: 20px;
-}
-.container ul li:hover, .container p:hover{
-    border-bottom: 1px solid white;
-    cursor: pointer;
-}
-#upi{
-    color: #00e1ff;
-    font-size: 40px;
-    transition: 3s ease-out;
-}
-
-.footer a{
-    text-decoration:none;
-    color: white;
-}
 
 .responsive {
     overflow: hidden;
