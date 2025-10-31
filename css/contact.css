@@ -201,6 +201,10 @@ textarea {
         margin: 150px 137px 50px 126px;
     }
 
+         ul li:hover>ul,
+         ul li ul:hover {
+             position: relative;
+         }
     .right1 img {
         width: 246px;
         height: 266px;

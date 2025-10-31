@@ -38,8 +38,11 @@ if (isset($_POST['submit'])) {
     }else if(!checkPassword($password) && !checkPassword($confirmation)){
         $msg .= "<small>Password should contain:<br>*One uppercase letter<br>*One lowercase letter<br>*One symbol<br>*The length should be minimum 8 characters and maximum 16</small>";
     } else {
-        $sql = mysqli_query($conn, "SELECT id from user WHERE email='$email' AND name='$user'");
-        if (mysqli_num_rows($sql) > 0) {
+        $sql = mysqli_prepare($conn, "SELECT id from user WHERE `email` = ? AND `name` = ? ");
+        mysqli_stmt_bind_param($stmt,'ss',$email,$user);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if (mysqli_num_rows($result) > 0) {
             $msg = "This email and user already exists";
         } else {
             $token = "KAHSDBKASJBKlnsldhao1-9u1p240127t419284ouwlcll";
@@ -47,12 +50,16 @@ if (isset($_POST['submit'])) {
             $token = substr($token, 0, 10);
 
             $hashedPassword = mysqli_real_escape_string($conn, password_hash($password, PASSWORD_BCRYPT));
-
-            $insert = mysqli_query($conn,"INSERT INTO `user` (name,email,password,isEmailConfirmed,token,image,role)
-            VALUES ('$user','$email','$hashedPassword','0','$token','$image','user');
+            
+            $stmt2 = mysqli_prepare($conn,"INSERT INTO `user` (name,email,password,isEmailConfirmed,token,image,role)
+            VALUES (?,?,?,?,?,?,?);
             ");
+            $isEmailConfirmed = 0;
+            $role='user';
+            mysqli_stmt_bind_param($stmt2, 'sssisss', $email, $user,$hashedPassword,$isEmailConfirmed,$toke,$image,$user);
+            $status = mysqli_stmt_execute($stmt);
 
-            if($insert)
+            if($status)
                 move_uploaded_file($image_tmp_name, $image_folder);
             $mail = new PHPMailer();
 
@@ -108,7 +115,7 @@ if (isset($_POST['submit'])) {
     <section>
         <div class="ctn">
             <nav class="navbar">
-            <?php include_once "navbar.php";?>
+                <?php include_once "navbar.php";?>
 
             </nav>
         </div>
@@ -139,11 +146,13 @@ if (isset($_POST['submit'])) {
                 <form action="" method="POST" name="sign-up" enctype="multipart/form-data">
                     <div class="email">
                         <p>Email</p>
-                        <i id="em" class="fa-solid fa-envelope"> <input type="email" name="email" placeholder="Introduceti email-ul dvs."></i>
+                        <i id="em" class="fa-solid fa-envelope"> <input type="email" name="email"
+                                placeholder="Introduceti email-ul dvs."></i>
                     </div>
                     <div class="user-name">
                         <p>Username</p>
-                        <i id="em" class="fa-solid fa-user"> <input type="text" name="user" placeholder="Introdu numele de utilizator"></i>
+                        <i id="em" class="fa-solid fa-user"> <input type="text" name="user"
+                                placeholder="Introdu numele de utilizator"></i>
                     </div>
                     <div class="user-name">
                         <p>Select photo</p>
@@ -153,11 +162,14 @@ if (isset($_POST['submit'])) {
 
                     <div class="parola">
                         <p>Parola</p>
-                        <i class="fa-solid fa-lock" id="parola1"> <input type="password" id="password" name="password" placeholder="Introdu parola"><i class="bi bi-eye-slash" id="myInput"></i> </i>
+                        <i class="fa-solid fa-lock" id="parola1"> <input type="password" id="password" name="password"
+                                placeholder="Introdu parola"><i class="bi bi-eye-slash" id="myInput"></i> </i>
                     </div>
                     <div class="parola">
                         <p>Confirmă parola</p>
-                        <i class="fa-solid fa-lock" id="parola1"> <input type="password" id="password1" name="confirmation" placeholder="Confirma-ți parola"><i class="bi bi-eye-slash" id="myInput1"></i> </i>
+                        <i class="fa-solid fa-lock" id="parola1"> <input type="password" id="password1"
+                                name="confirmation" placeholder="Confirma-ți parola"><i class="bi bi-eye-slash"
+                                id="myInput1"></i> </i>
                     </div>
                     <div class="button">
                         <button type="submit" name="submit" value="Register">înregistrați-vă</button>

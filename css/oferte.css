@@ -241,6 +241,12 @@
         right: 3%;
     }
 
+
+         ul li:hover>ul,
+         ul li ul:hover {
+             position: relative;
+         }
+         
     .responsive .dropdown:hover {
         visibility: visible;
         opacity: 1;

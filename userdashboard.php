@@ -2,17 +2,21 @@
 session_start();
 include "./php/connection.php";
 
-$user_id = $_SESSION['user_id'];
 
-if (!isset($user_id)) {
+if (!isset($_SESSION['user_id'])) {
     header("location:./login.php");
 }
+$user_id = $_SESSION['user_id'];
 
-$sql = mysqli_query($conn, "SELECT * FROM `user` WHERE id='$user_id' ");
-if (mysqli_num_rows($sql) > 0) {
-    $row = mysqli_fetch_assoc($sql);
+$stmt = mysqli_prepare($conn, "SELECT * FROM `user` WHERE id=? ");
+    mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
 } else {
     header("location:./login.php");
+    exit;
 }
 
 if (isset($_GET['logout'])) {

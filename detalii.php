@@ -4,11 +4,15 @@ include "php/connection.php";
 if (isset($_GET['city'])) {
     $city = $_GET['city'];
 }
-$sql = mysqli_query($conn, "SELECT info.*,gallery.path FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.city ='$city'") or die(mysqli_error($conn));;
+$stmt = mysqli_prepare($conn, "SELECT info.*,gallery.path FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.city=? ") or die(mysqli_error($conn));
+mysqli_stmt_bind_param($stmt,'s',$city);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-if (mysqli_num_rows($sql) > 0) {
-    $row = mysqli_fetch_assoc($sql);
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
 }
+
 $id_info = $row['id'];
 $_SESSION['id_info'] = $id_info;
 
@@ -63,16 +67,16 @@ $_SESSION['id_info'] = $id_info;
                     <div class="right2">
                         <div class="header">
                             <div>
-                                <p><i class="fa-solid fa-plane-departure"></i>&nbsp&nbsp<span class="titlu"><?php
-                                                                                                            if ($row['country'] == "Moldova" || $row['country'] == "Romania") {
-                                                                                                                echo $row['country'];
-                                                                                                            } else {
-                                                                                                                echo $row['city'];
-                                                                                                            }
-                                                                                                            ?></span>
+                                <p><i class="fa-solid fa-plane-departure"></i>&nbsp&nbsp
+                                    <span class="titlu">
+                                        <?php
+                                        echo ($row['country'] == 'Moldova' || $row['country'] == 'Romania') ? $row['country'] : $row['city']
+                                        ?>
+                                    </span>
                                 </p>
                             </div>
-                            <p class="pret"><?= $row['price'] ?>€ </p>
+                            <p class="pret"><?= $row['price'] ?>€
+                            </p>
                         </div>
 
                     </div>
@@ -105,14 +109,12 @@ $_SESSION['id_info'] = $id_info;
         </div>
         <div class="images-grid-background" id="galerie">
             <?php
-            mysqli_data_seek($sql, 0); //seteaza pointerul de la pozitia pe care o indici, eu am indicat aici pentru ca am returnat primul rand din scripptul de sus, iar acum pointerul este automat la al doilea 
-
-            while ($photo = mysqli_fetch_assoc($sql)) {
+            //seteaza pointerul de la pozitia pe care o indici, eu am indicat aici pentru ca am returnat primul rand din scripptul de sus, iar acum pointerul este automat la al doilea 
+            mysqli_data_seek($result, 0); 
+            while ($photo = mysqli_fetch_assoc($result)) {
             ?>
             <div><img src="<?= $photo['path']; ?>" loading="lazy" alt="error" class="img1"></div>
-            <?php
-            }
-            ?>
+            <?php } ?>
         </div>
         <div class="continer">
             <div class="pret-ctn">
@@ -134,8 +136,10 @@ $_SESSION['id_info'] = $id_info;
                 </div>
                 <p class="det">
                     Agenții de turism își ajută clienții să își facă planuri de călătorie. Pe lângă rezervarea
-                    rezervărilor, ei ajută clienții să-și aleagă destinația, transportul și cazarea și îi informează pe
-                    călători cu privire la cerințele pentru pașapoarte și vize, ratele de schimb valutar și taxele de
+                    rezervărilor, ei ajută clienții să-și aleagă destinația, transportul și cazarea și îi informează
+                    pe
+                    călători cu privire la cerințele pentru pașapoarte și vize, ratele de schimb valutar și taxele
+                    de
                     import.
                 </p>
             </div>

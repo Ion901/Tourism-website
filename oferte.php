@@ -23,9 +23,13 @@
                 <?php
 
                 include "php/connection.php";
-                $sql = mysqli_query($conn, "SELECT * FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.is_offer = 1 GROUP BY gallery.id_info");
-                $rowcount = mysqli_num_rows($sql);
-                $row2 = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+                $id_offer=1;
+                $stmt = mysqli_prepare($conn, "SELECT * FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.is_offer = ? GROUP BY gallery.id_info");
+                mysqli_stmt_bind_param($stmt,'i',$id_offer);
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+                $rowcount = mysqli_num_rows($result);
+                $row2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 for ($i = 0; $i < $rowcount; $i++) {
                 ?>
                 <div class="barca oferte">

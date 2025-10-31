@@ -2,7 +2,6 @@
 session_start();
 include("connection.php");
 
-
 $id = $_GET['id'];
 
 $user_id = $_SESSION['user_id'];
@@ -10,17 +9,28 @@ if (!isset($user_id)) {
     header("location:../login.php");
 }
 
-$sql = mysqli_query($conn, "SELECT * FROM `user` WHERE id='$user_id' ");
-if (mysqli_num_rows($sql) > 0) {
-    $row = mysqli_fetch_assoc($sql);
+$stmt = mysqli_prepare($conn, "SELECT * FROM `user` WHERE id= ? ");
+mysqli_stmt_bind_param($stmt, 'i', $user_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
 }
 
 if ($row['role'] == "user") {
     header("location:userdashboard.php");
 }
 
-$sql1 = mysqli_query($conn, "SELECT * FROM `info` WHERE info.id=$id") or die(mysqli_error($conn));
-$sql2 = mysqli_query($conn, "SELECT `id`, `path` FROM `gallery` WHERE id_info=$id") or die(mysqli_error($conn));
+$sql1 = mysqli_prepare($conn, "SELECT * FROM `info` WHERE info.id=?") or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($sql1,'i',$id);
+    mysqli_stmt_execute($sql1);
+    $result1 = mysqli_stmt_get_result($sql1);
+    
+$sql2 = mysqli_prepare($conn, "SELECT `id`, `path` FROM `gallery` WHERE id_info=?") or die(mysqli_error($conn));
+    mysqli_stmt_bind_param($sql2, 'i', $id);
+    mysqli_stmt_execute($sql2);
+    $result2 = mysqli_stmt_get_result($sql2);
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +44,7 @@ $sql2 = mysqli_query($conn, "SELECT `id`, `path` FROM `gallery` WHERE id_info=$i
 </head>
 
 <body>
-    <?php while ($row = mysqli_fetch_row($sql1)) : ?>
+    <?php while ($row = mysqli_fetch_row($result1)) : ?>
     <div class="form-container">
         <p><?= $_GET['error'] ?? $_GET['success'] ?? "" ?></p>
         <h2>Edit Record</h2>
@@ -58,8 +68,8 @@ $sql2 = mysqli_query($conn, "SELECT `id`, `path` FROM `gallery` WHERE id_info=$i
 
             <label for="image">Image</label>
             <div>
-                <?php if (mysqli_num_rows($sql2) > 0): ?>
-                <?php while ($row = mysqli_fetch_row($sql2)) : ?>
+                <?php if (mysqli_num_rows($result2) > 0): ?>
+                <?php while ($row = mysqli_fetch_row($result2)) : ?>
                 <?php $imageSrc = is_null($row) ? "" : htmlspecialchars($row[1]); ?>
                 <div class="img-selector">
                     <img loading="lazy" class="admin-edit-photo myImg" id="myImg1" src=".<?php echo $imageSrc; ?>"

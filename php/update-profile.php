@@ -13,9 +13,16 @@ if (isset($_POST['update-profile'])) {
     $update_name = mysqli_real_escape_string($conn, $_POST['name']);
     $update_email = mysqli_real_escape_string($conn, $_POST['email']);
 
-    mysqli_query($conn, "UPDATE `user` SET name = '$update_name', email = '$update_email' WHERE id='$user_id'") or die('query failed');
-    $sql = mysqli_query($conn, "SELECT password from user where id = $user_id") or die('query failed');
-    $password_fromDB = mysqli_fetch_array($sql);
+    $stmt = mysqli_prepare($conn, "UPDATE `user` SET name = ?, email = ? WHERE id= ?") or die('query failed');
+    mysqli_stmt_bind_param($stmt, 'ssi', $update_name, $update_email, $user_id);
+    mysqli_stmt_execute($stmt);
+    
+    $stmt1 = mysqli_prepare($conn, "SELECT password from user where id = ?") or die('query failed');
+    mysqli_stmt_bind_param($stmt1, 'i',$user_id);
+    mysqli_stmt_execute($stmt1);
+    $result1 = mysqli_stmt_get_result($stmt1);
+    
+    $password_fromDB = mysqli_fetch_array($result1);
 
     $update_pass = mysqli_real_escape_string($conn, $_POST['pass1']);
     $new_pass = mysqli_real_escape_string($conn, $_POST['pass2']);
@@ -29,7 +36,9 @@ if (isset($_POST['update-profile'])) {
                 $message = "confirm password not matched";
             } else {
                 $confirm_pass_hash = mysqli_real_escape_string($conn, password_hash($_POST['pass3'], PASSWORD_BCRYPT));
-                mysqli_query($conn, "UPDATE `user` SET password = '$confirm_pass_hash' WHERE id = '$user_id'") or die('query failed');
+                $stmt2 = mysqli_prepare($conn, "UPDATE `user` SET password = ? WHERE id = ?") or die('query failed');
+                mysqli_stmt_bind_param($stmt2,'si',$confirm_pass_hash,$user_id);
+                mysqli_stmt_execute($stmt2);
                 $message = "password updated succesfuly";
             }
         }
@@ -46,8 +55,10 @@ if (isset($_POST['update-profile'])) {
         if ($update_image_size > 2000000) {
             $message = "image is too large";
         } else {
-            $image_update_query = mysqli_query($conn, "UPDATE `user` SET image='$update_image' WHERE id = '$user_id'") or die('query failed');
-            if ($image_update_query) {
+            $image_update_query = mysqli_prepare($conn, "UPDATE `user` SET image=? WHERE id = ?") or die('query failed');
+            mysqli_stmt_bind_param($image_update_query, 'si', $update_image, $user_id);
+            $status = mysqli_stmt_execute($image_update_query);
+            if ($status) {
                 move_uploaded_file($update_image_tmp_name, $update_image_folder);
                 $message = "something wrong hapenned";
             }
@@ -81,9 +92,13 @@ if (isset($_POST['update-profile'])) {
 
         <div class="section">
             <?php
-            $sql = mysqli_query($conn, "SELECT * FROM `user` WHERE id='$user_id' ");
-            if (mysqli_num_rows($sql) > 0) {
-                $row = mysqli_fetch_assoc($sql);
+            $sql = mysqli_prepare($conn, "SELECT * FROM `user` WHERE id=? ");
+            mysqli_stmt_bind_param($sql, 'i',$user_id);
+            mysqli_stmt_execute($sql);
+            $result2 = mysqli_stmt_get_result($sql);
+            
+            if (mysqli_num_rows($result2) > 0) {
+                $row = mysqli_fetch_assoc($result2);
             }
             ?>
             <div class="container">
@@ -95,6 +110,7 @@ if (isset($_POST['update-profile'])) {
                 $url .= $_SERVER['HTTP_HOST'];
                 $url .= $_SERVER['PHP_SELF'];
                 $directory = basename(dirname($url));
+                
                 if ($row['image'] == '') {
                     echo '<img src="../images/default-avatar.png" loading="lazy" >';
                 } else { ?>

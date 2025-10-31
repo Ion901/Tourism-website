@@ -1,10 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
 }
+
 .Layer_1 {
     position: absolute;
     width: 292px;
@@ -40,14 +41,14 @@
     height: 140px;
     width: 97%;
     justify-content: flex-end;
-  
+
 }
 
-.form{
+.form {
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-5%);
+    transform: translate(-50%, -5%);
     transition: all 1s;
     width: 50px;
     height: 50px;
@@ -58,11 +59,12 @@
     padding: 5px;
 }
 
-.inp{
+.inp {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;;
+    width: 100%;
+    ;
     height: 42.5px;
     line-height: 30px;
     outline: 0;
@@ -73,7 +75,7 @@
     padding: 0 20px;
 }
 
-.form i{
+.form i {
     box-sizing: border-box;
     padding: 10px;
     width: 42.5px;
@@ -89,39 +91,39 @@
 }
 
 .form:hover,
-.form:valid{
+.form:valid {
     width: 200px;
     cursor: pointer;
 }
 
 .form:hover input,
-.form:valid input{
+.form:valid input {
     display: block;
 }
 
 .form:hover i,
-.form:valid i{
+.form:valid i {
     background: #07051a;
     color: white;
-    top:0px;
+    top: 0px;
 }
 
 #clear-btn {
-  display: none;
-  position: absolute;
-  top: 32.5px;
-  bottom:0;
-  left: 0;
-  right: 0;
-  font-size: 20px;
-  color: white;
-  text-align: center; 
-  width: 100%;
+    display: none;
+    position: absolute;
+    top: 32.5px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    width: 100%;
 }
 
 form:valid #clear-btn {
-  display: block;
-  position: relative;
+    display: block;
+    position: relative;
 }
 
 .sticked {
@@ -130,8 +132,8 @@ form:valid #clear-btn {
 }
 
 .navbar {
-    background: url('../images/pexels-connor-kelley-2651377.jpg') no-repeat fixed center;
-    object-fit:cover;
+    background: url('../images/pexels-connor-kelley-2651377.webp') no-repeat fixed center;
+    object-fit: cover;
     height: 505px;
     font-family: 'Inter', sans-serif;
     font-size: 20px;
@@ -143,11 +145,11 @@ form:valid #clear-btn {
     object-fit: cover;
 }
 
-.right a{
+.right a {
     text-decoration: none;
     background-image: linear-gradient(to right,
-    rgb(185, 183, 47),
-    rgb(255, 251, 0) 50%,
+            rgb(185, 183, 47),
+            rgb(255, 251, 0) 50%,
             rgb(255, 255, 255) 50%);
     background-size: 200% 100%;
     background-position: -100%;
@@ -156,7 +158,7 @@ form:valid #clear-btn {
     position: relative;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
 
 }
 
@@ -188,8 +190,9 @@ ul li ul {
     display: none;
     background: rgba(22, 53, 190, 0.589);
     position: absolute;
-    
+
 }
+
 .sticky {
     position: fixed;
     width: 100%;
@@ -201,6 +204,7 @@ ul li ul {
     height: 120px;
     color: white;
 }
+
 ul li:hover>ul,
 ul li ul:hover {
     visibility: visible;

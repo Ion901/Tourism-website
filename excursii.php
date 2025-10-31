@@ -63,25 +63,29 @@
             <div class="cnt">
                 <?php
                 include "php/connection.php";
-                $sql = mysqli_query($conn, "SELECT * FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.is_excursion = 1 GROUP BY gallery.id_info");
-                $rowcount = mysqli_num_rows($sql);
-                $row2 = mysqli_fetch_all($sql, MYSQLI_ASSOC);
+                $id_excursion = 1;
+                $stmt = mysqli_prepare($conn, "SELECT * FROM `info` LEFT JOIN `gallery` ON info.id = gallery.id_info WHERE info.is_excursion = ? GROUP BY gallery.id_info");
+                mysqli_stmt_bind_param($stmt,'i',$id_excursion);
+                mysqli_stmt_execute($stmt);
+                $data = mysqli_stmt_get_result($stmt);
+                $rowcount = mysqli_num_rows($data);
+                $row2 = mysqli_fetch_all($data, MYSQLI_ASSOC);
                 for ($i = 0; $i < $rowcount; $i++) {
                 ?>
-                    <div class="prima oferte">
-                        <a href="detalii.php?city=<?php echo $row2[$i]['city'] ?>">
-                            <img src="<?php echo $row2[$i]['path'] ?>" loading="lazy" alt="image not responding">
-                            <div class="content">
-                                <h5><?php echo $row2[$i]['disponibility'] ?></h5>
-                                <p class="text"><?php echo $row2[$i]['city'] ?></p>
-                                <br>
-                                <div class="inline">
-                                    <p><i class="fa-solid fa-clock"></i><?php echo $row2[$i]['durata'] ?></p>
-                                    <p class="pret">Price:<i><?php echo $row2[$i]['price'] ?>$</i></p>
-                                </div>
+                <div class="prima oferte">
+                    <a href="detalii.php?city=<?php echo $row2[$i]['city'] ?>">
+                        <img src="<?php echo $row2[$i]['path'] ?>" loading="lazy" alt="image not responding">
+                        <div class="content">
+                            <h5><?php echo $row2[$i]['disponibility'] ?></h5>
+                            <p class="text"><?php echo $row2[$i]['city'] ?></p>
+                            <br>
+                            <div class="inline">
+                                <p><i class="fa-solid fa-clock"></i><?php echo $row2[$i]['durata'] ?></p>
+                                <p class="pret">Price:<i><?php echo $row2[$i]['price'] ?>$</i></p>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+                </div>
                 <?php
                 }
                 ?>
@@ -89,7 +93,7 @@
         </div>
 
         <div class="ask_tab">
-            <img src="./images/Rectangle 16.jpg" loading="lazy" alt="image not responding">
+            <img src="./images/Rectangle 16.webp" loading="lazy" alt="image not responding">
             <div class="content-01">
                 <p>Ai anumite intrebari?! <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspFii liber sa
                     intrebi...</p>

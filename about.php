@@ -34,13 +34,13 @@
                 </p>
             </div>
             <div class="img">
-                <img src="./images/first.jpg" loading="lazy" alt="error">
+                <img src="./images/first.webp" loading="lazy" alt="error">
             </div>
         </div>
         <div class="mid">
             <div class="pos">
                 <div class="img1">
-                    <img src="./images/second.jpg" loading="lazy" alt="error">
+                    <img src="./images/second.webp" loading="lazy" alt="error">
                 </div>
 
                 <div class="info1">
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="incheiere">
-            <img src="./images/third.jpg" loading="lazy" alt="error">
+            <img src="./images/third.webp" loading="lazy" alt="error">
             <p>Consecvența în potrivire, exactitatea și calitate personalului aduce această abordare practică. Vezi
                 procesul nostru.</p>
         </div>

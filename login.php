@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if(isset($_SESSION['user_id'])){
@@ -13,9 +12,12 @@ if(isset($_POST['submit'])) {
     if($email == "" || $password == "")
         $msg = "Please check your inputs";
     else{
-        $sql = mysqli_query($conn,"SELECT id, password, isEmailConfirmed from user WHERE email='$email'");
-        if(mysqli_num_rows($sql) > 0){
-            $data=mysqli_fetch_array($sql); 
+        $stmt = mysqli_prepare($conn,"SELECT id, password, isEmailConfirmed from user WHERE email=?");
+        mysqli_stmt_bind_param($stmt,'s',$email);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if(mysqli_num_rows($result) > 0){
+            $data=mysqli_fetch_array($result); 
          if(password_verify($password,$data['password'])) {
             if($data['isEmailConfirmed'] == 0){
                 $msg="PLease verify your email";
@@ -37,6 +39,7 @@ if(isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +54,7 @@ if(isset($_POST['submit'])) {
     <section>
         <div class="ctn">
             <nav class="navbar">
-            <?php include_once "navbar.php";?>
+                <?php include_once "navbar.php";?>
 
             </nav>
         </div>
@@ -65,14 +68,14 @@ if(isset($_POST['submit'])) {
                 <div class="signin">
                     <p>Sign in</p>
                 </div>
-               
+
                 <span class="error">
                     <p>
-                <?php
+                        <?php
                 if($msg!="")
              echo $msg."<br>";
                 ?>
-                </p>
+                    </p>
                 </span>
                 <div class="info">
                     <p>Dacă nu ai un cont înregistrat</p>
@@ -83,22 +86,23 @@ if(isset($_POST['submit'])) {
                     <div class="email">
                         <p>Email</p>
                         <i id="em" class="fa-solid fa-envelope">
-                             <input type="email" name="email" placeholder="Introduceti email-ul dvs."  ></i>
+                            <input type="email" name="email" placeholder="Introduceti email-ul dvs."></i>
                     </div>
                     <div class="parola">
                         <p>Parola</p>
-                        <i class="fa-solid fa-lock" id="parola1"> 
-                            <input type="password" name="password" id="password" placeholder="Introdu parola"><i class="bi bi-eye-slash" id="myInput"></i> </i>
+                        <i class="fa-solid fa-lock" id="parola1">
+                            <input type="password" name="password" id="password" placeholder="Introdu parola"><i
+                                class="bi bi-eye-slash" id="myInput"></i> </i>
                     </div>
                     <div class="button">
-                    <button type="submit" name="submit" value="submit">Login</button>
-                </div>
+                        <button type="submit" name="submit" value="submit">Login</button>
+                    </div>
 
                 </form>
                 <div class="remember">
                     <p><input type="checkbox" id="check">Remember me</p>
                 </div>
-                
+
                 <div class="social">
                     <p>
                         continuă cu

@@ -1,33 +1,38 @@
 @import "../css/navbar2.css";
 @import "../css/footer.css";
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
 .navbar {
-    
-    background: url('../images/pexels-eberhard-grossgasteiger-1428277.jpg') no-repeat fixed center;
+
+    background: url('../images/pexels-eberhard-grossgasteiger-1428277.webp') no-repeat fixed center;
     position: relative;
 }
-.submenu{
+
+.submenu {
     position: absolute;
     text-align: center;
     top: 80%;
-    left:38%;
+    left: 38%;
 }
-.submenu p{
+
+.submenu p {
     font-family: 'Inter', sans-serif;
     font-size: 30px;
     font-weight: bold;
     color: white;
 }
 
-.maps{
+.maps {
 
     height: 100%;
 }
+
 .header {
     padding-top: 20px;
     text-align: center;
@@ -37,55 +42,63 @@
     padding-bottom: 20px;
 }
 
-.mas-in{
+.mas-in {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
-    gap:44px;
-    
+    gap: 44px;
+
 }
-.mas-in img{
+
+.mas-in img {
     width: 100px;
     object-fit: cover;
-   
+
 }
-.mas-in img:hover{
+
+.mas-in img:hover {
     animation-name: example;
     animation-duration: 2s;
     animation-iteration-count: 2;
-    cursor:pointer;
-    
+    cursor: pointer;
+
 }
+
 @keyframes example {
-    0%{
+    0% {
         transform: rotateY(0deg);
     }
-    20%{
+
+    20% {
         transform: rotateY(900deg);
     }
-    40%{
+
+    40% {
         transform: rotateY(1200deg);
     }
-    
-    80%{
+
+    80% {
         transform: rotateY(310deg);
     }
-    100%{
+
+    100% {
         transform: rotateY(360deg);
     }
-    
+
 }
-.mas-in div p{
+
+.mas-in div p {
     text-align: center;
     width: 100%;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
 }
+
 #map {
     height: 400px;
     width: 100%;
-}   
+}
 
 
 
@@ -101,10 +114,11 @@
         box-shadow: 0px 3px 5px -1px rgb(0 0 0);
     }
 
-    .options{
+    .options {
         display: none;
     }
-    .dropdown ul li{
+
+    .dropdown ul li {
         padding-bottom: 5px;
     }
 
@@ -115,37 +129,42 @@
         overflow: scroll;
         font-size: 18px;
         padding-top: 75px;
-        
+
     }
+         ul li:hover>ul,
+         ul li ul:hover {
+             position: relative;
+         }
 
     .right.responsive {
         position: relative;
         height: 100vh;
-        left:45%;
+        left: 45%;
         width: 55%;
         z-index: 100;
         display: flex;
-        box-shadow: -28px -5px 48px -1px rgba(0,0,0,0.75);
+        box-shadow: -28px -5px 48px -1px rgba(0, 0, 0, 0.75);
     }
-    .right ul li{
+
+    .right ul li {
         padding-bottom: 20px;
     }
 
     .right.responsive a {
-        float:none;
+        float: none;
         display: block;
         text-align: center;
     }
 
     .right a:not(:first-child) {
         float: right;
-    display: block;
-    z-index: 100;
-    position: absolute;
-    top: 50px;
-    font-size: 25px;
-    color: white;
-    right: 3%;
+        display: block;
+        z-index: 100;
+        position: absolute;
+        top: 50px;
+        font-size: 25px;
+        color: white;
+        right: 3%;
     }
 
     a.icon {
@@ -165,31 +184,38 @@
         height: 530px;
     }
 
-    .container{
-        gap:22px;
+    .container {
+        gap: 22px;
         margin-left: 0px;
     }
+
     .right ul::-webkit-scrollbar {
         display: none;
     }
 }
- @media screen and (max-width:540px){
-    .container{
-        gap:20px;
+
+@media screen and (max-width:540px) {
+    .container {
+        gap: 20px;
     }
-    .logo img{
+
+    .logo img {
         width: 86px;
         height: 123px;
     }
-    .container p,.container ul>li{
-        gap:2px;
-        margin-left:0px;
+
+    .container p,
+    .container ul>li {
+        gap: 2px;
+        margin-left: 0px;
         font-size: 9px;
     }
-    #upi{
+
+    #upi {
         font-size: 21px;
     }
-    .submenu{
-        left:8%;
+
+    .submenu {
+        left: 8%;
     }
- }
+}

@@ -11,19 +11,25 @@ if (isset($data['name']) && isset($data['mail']) && isset($data['phone']) && iss
     $phone = $data['phone'];
     $adult = $data['adult'];
     $copil = $data['copil'];
-    $checkin_date = $data['checkin_date'];
+    $checkin_date = new DateTime($data['checkin_date']);
     $message = $data['message'];
     $addOns = $data['addOns'];
     $id_info = $data['id_info'];
     $id_user= $data['id_user'];
 
-    $sqlChecking = "SELECT id FROM `orders` WHERE name='$name' AND mail='$mail' AND phone='$phone' ";
-    $stmt1 = mysqli_query($conn, $sqlChecking);
-    if(mysqli_num_rows($stmt1) > 0){
+    $sqlChecking = "SELECT id FROM `orders` WHERE name=? AND mail=? AND phone=? ";
+    $stmt1 = mysqli_prepare($conn, $sqlChecking);
+    mysqli_stmt_bind_param($stmt1, 'sss',$name, $email,$phone);
+    mysqli_stmt_execute($stmt1);
+    $result1 = mysqli_stmt_get_result($stmt1);
+    
+    if(mysqli_num_rows($result1) > 0){
         echo json_encode(['status' => 'error', 'message' => 'You already booked this offer']);
     }else{
         try {
-            $stmt = mysqli_query($conn, "INSERT INTO orders (name, mail, phone, adults, children, `check-in`, preference, `add-ons`,`id_info`,`id_user`) VALUES ('$name', '$mail', '$phone', '$adult', '$copil', '$checkin_date', '$message','$addOns','$id_info','$id_user')") or die(mysqli_error($conn));
+            $stmt = mysqli_prepare($conn, "INSERT INTO orders (`name`, mail, phone, adults, children, `check-in`, preference, `add-ons`,`id_info`,`id_user`) 
+                    VALUES (?,?,?,?,?,?,?,?,?,?)");
+                    mysqli_stmt_bind_param($stmt, 'sssiisssii', $name, $mail, $phone, $adult, $copil, $checkin_date, $message, $addOns, $id_info, $id_user);
     
             // Return a success response
             echo json_encode(['status' => 'success', 'message' => 'Order inserted successfully!']);
@@ -39,4 +45,3 @@ if (isset($data['name']) && isset($data['mail']) && isset($data['phone']) && iss
     echo json_encode(['status' => 'error', 'message' => 'Missing required data.']);
 }
 ?>
-

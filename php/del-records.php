@@ -2,10 +2,17 @@
 include ("connection.php");
 $id = $_GET['id'];
 
-$imgQuery = mysqli_query($conn, "SELECT `path` from gallery WHERE id_info = '$id'");
-$qr = mysqli_query($conn,"DELETE FROM `info` WHERE id=$id");
+$imgQuery = mysqli_prepare($conn, "SELECT `path` from gallery WHERE id_info = ?");
+mysqli_stmt_bind_param($imgQuery,'i',$id);
+mysqli_stmt_execute($imgQuery);
+$result = mysqli_stmt_get_result($imgQuery);
 
-while($path = mysqli_fetch_assoc($imgQuery)){
+$qr = mysqli_prepare($conn,"DELETE FROM `info` WHERE id=?");
+mysqli_stmt_bind_param($qr, 'i', $id);
+mysqli_stmt_execute($qr);
+$statusDelete = mysqli_stmt_get_result($qr);
+
+while($path = mysqli_fetch_assoc($result)){
 $photoPath = ltrim(str_replace('/',"\\",$path['path']),'.');
 //ltrim - strge prima aparitie a caracterului in string(string, character)
 //str_replace - inlocuieste carcaterul cu alt caracter in string (array|string $search, array|string $replace, array|string $subject)
@@ -13,7 +20,7 @@ $photoPath = ltrim(str_replace('/',"\\",$path['path']),'.');
 
 if(file_exists('.'.$path['path'])){
     unlink(dirname(__DIR__).$photoPath);
-    if($qr){
+    if($statusDelete){
     echo "<script>alert(\"Row Deleted\");</script>";
     header("Location:../admindashboard.php");
 }else{

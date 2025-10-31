@@ -10,7 +10,7 @@
 
 
 .navbar {
-    background: url('../images/pexels-jeremy-bishop-2422915.jpg') no-repeat fixed center;
+    background: url('../images/pexels-jeremy-bishop-2422915.webp') no-repeat fixed center;
     object-fit: cover;
     height: 505px;
     font-family: 'Inter', sans-serif;
@@ -65,19 +65,20 @@
     font-size: 1.2em;
     transition: all 1s;
 }
-.formular i{
-    box-sizing:unset;
-    padding:unset;
-    width:unset;
-    height:unset;
-    position:unset;
-    top:unset;
-    right:unset;
-    border-radius:unset;
-    color:unset;
-    text-align:unset;
-    font-size:unset;
-    transition:unset;
+
+.formular i {
+    box-sizing: unset;
+    padding: unset;
+    width: unset;
+    height: unset;
+    position: unset;
+    top: unset;
+    right: unset;
+    border-radius: unset;
+    color: unset;
+    text-align: unset;
+    font-size: unset;
+    transition: unset;
 }
 
 .formular:hover,
@@ -132,22 +133,24 @@ form {
     justify-content: center;
     align-items: center;
 }
-.formular2{
-position: relative ;
-background-color: white;
-top: unset;
+
+.formular2 {
+    position: relative;
+    background-color: white;
+    top: unset;
     left: unset;
-    transform: none ;
-    transition:none ;
-    width: unset ;
-    height: unset ;
+    transform: none;
+    transition: none;
+    width: unset;
+    height: unset;
     background: white;
     box-sizing: none;
     border-radius: unset;
     border: unset;
     padding: 5px unset;
 }
-.formular2:hover{
+
+.formular2:hover {
     width: unset;
 }
 
@@ -405,13 +408,16 @@ top: unset;
     .responsive .dropdown:hover {
         visibility: visible;
         opacity: 1;
-        position: relative;
         display: block;
         min-width: 200px;
         text-align: left;
         padding-top: 20px;
         box-shadow: 0px 3px 5px -1px rgb(0 0 0);
     }
+         ul li:hover>ul,
+         ul li ul:hover {
+             position: relative;
+         }
 
     .options {
         display: none;
@@ -420,11 +426,11 @@ top: unset;
     .right.responsive {
         position: relative;
         height: 100vh;
-        left:45%;
+        left: 45%;
         width: 55%;
         z-index: 100;
         display: flex;
-        box-shadow: -28px -5px 48px -1px rgba(0,0,0,0.75);
+        box-shadow: -28px -5px 48px -1px rgba(0, 0, 0, 0.75);
     }
 
     .right.responsive a {
@@ -456,6 +462,7 @@ top: unset;
         font-size: 18px;
         padding-top: 75px;
     }
+
     .right ul li {
         padding-bottom: 20px;
     }
@@ -498,14 +505,17 @@ top: unset;
     button {
         width: 143px;
     }
-    .divider{
+
+    .divider {
         width: 100%;
     }
-    .documents{
+
+    .documents {
         width: 100%;
 
     }
-    .divider img{
+
+    .divider img {
         width: 300px;
     }
 }
@@ -549,9 +559,9 @@ top: unset;
         font-size: 12px;
         height: 38px;
         width: 115px;
-       
+
     }
-    
+
 
     .stil {
         top: 23px;
@@ -559,19 +569,23 @@ top: unset;
         width: 277px;
     }
 
-    .container p,.container ul>li{
-        gap:2px;
-        margin-left:0px;
+    .container p,
+    .container ul>li {
+        gap: 2px;
+        margin-left: 0px;
         font-size: 9px;
     }
-    .logo img{
+
+    .logo img {
         width: 86px;
         height: 123px;
     }
-    .container{
-        gap:20px;
+
+    .container {
+        gap: 20px;
     }
 }
+
 /* @media screen and (max-width:1024px){
 
     .container{

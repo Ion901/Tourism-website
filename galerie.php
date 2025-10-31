@@ -1,8 +1,15 @@
 <?php
 include "./php/connection.php";
-$sql = mysqli_query($conn, "SELECT * from gallery WHERE id BETWEEN 1 AND 10");
-if (mysqli_num_rows($sql) > 0) {
-    $row = mysqli_fetch_all($sql);
+$id_start = 1;
+$id_final = 10;
+
+$stmt = mysqli_prepare($conn, "SELECT * from gallery WHERE id BETWEEN ? AND ?");
+mysqli_stmt_bind_param($stmt, 'ii', $id_start, $id_final);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_all($result);
 }
 ?>
 <!DOCTYPE html>
